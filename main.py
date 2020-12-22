@@ -15,6 +15,7 @@ class VkGroupParser:
         self.threads_count = 2
 
     def parse(self, owner_id):
+        # parse vk.com wall
         self.links = []
         print(f'parsing group {owner_id}')
         wall = requests.get('https://api.vk.com/method/wall.get', params={'access_token': self.token,
@@ -42,6 +43,7 @@ class VkGroupParser:
             offset += 100
 
     def download(self):
+        # download images
         try:
             os.mkdir('out')
         except:
