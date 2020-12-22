@@ -1,8 +1,7 @@
 import os
 import time
-from threading import Thread
-
 import requests
+from threading import Thread
 
 
 class VkGroupParser:
@@ -48,7 +47,7 @@ class VkGroupParser:
         except:
             pass
         for thread_num in range(self.threads_count):
-            Thread(target=self.downloading_thread, args=(self.links[thread_num::self.threads_count], )).start()
+            Thread(target=self.downloading_thread, args=(self.links[thread_num::self.threads_count],)).start()
             time.sleep(0.1)
 
     def downloading_thread(self, links_package):
@@ -64,8 +63,7 @@ class VkGroupParser:
             print(f'downloading {group_id}')
             self.download()
 
+
 if __name__ == '__main__':
-
-
     bot = VkGroupParser()
     bot.run()
