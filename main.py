@@ -56,7 +56,7 @@ class VkGroupParser:
         for x in links_package:
             print(f'downloading {self.links.index(x)} in {len(self.links)}')
             photo = requests.get(x[0])
-            with open('out\\' + str(x[1]) + '.jpg', 'wb') as f:
+            with open('./out/' + str(x[1]) + '.jpg', 'wb') as f:
                 f.write(photo.content)
 
     def run(self):
