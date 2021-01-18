@@ -12,7 +12,7 @@ class VkGroupParser:
         with open('./in/vk_token.txt', 'r', encoding='utf-8') as file:
             self.token = file.read().split('\n')[0]
 
-        self.threads_count = 2
+        self.threads_count = 100
 
     def parse(self, owner_id):
         # parse vk.com wall
@@ -55,7 +55,10 @@ class VkGroupParser:
     def downloading_thread(self, links_package):
         for x in links_package:
             print(f'downloading {self.links.index(x)} in {len(self.links)}')
-            photo = requests.get(x[0])
+            try:
+                photo = requests.get(x[0])
+            except:
+                continue
             with open('./out/' + str(x[1]) + '.jpg', 'wb') as f:
                 f.write(photo.content)
 
